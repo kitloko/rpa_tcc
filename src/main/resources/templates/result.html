@@ -1,0 +1,514 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+
+    <script
+            src="https://code.jquery.com/jquery-3.6.4.js"
+            integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+            crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+</head>
+<body class="bg-light">
+<div class="container">
+
+    <div class="row row-cols-1 row-cols-md-4 g-4 mb-5 mt-5">
+        <!--        <div class="col">-->
+        <!--            <div class="card h-100">-->
+        <!--                <div class="card-body">-->
+        <!--                    <h6 class="card-title">Custo Total de Colaboradores</h6>-->
+        <!--                    <h1 class="card-text" th:text="'Anual R$ ' + ${greeting.totalColabAno}">R$ 0,00</h1>-->
+        <!--                    <p class="card-text" th:text="'Mensal R$ ' + ${greeting.totalColab}">R$ 0,00</p>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Investimento Inicial</h5>
+                    <h1 class="card-text" th:text="${greeting.totalCustoDev}">R$ 0,00</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Custo de Suporte</h5>
+                    <h1 class="card-text" th:text="${greeting.totalCustoSuporte}">R$ 0,00</h1>
+                    <p class="card-text" th:text="${greeting.totalCustoSuporteAno}">R$ 0,00</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Custo das Maquinas</h5>
+                    <h1 class="card-text" th:text="${greeting.totalCustoMaq}">R$ 0,00</h1>
+                    <p class="card-text" th:text="${greeting.totalCustoMaqAno}">R$ 0,00</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Custo dos Serviços</h5>
+                    <h1 class="card-text" th:text="${greeting.totalCustoService}">R$ 0,00</h1>
+                    <p class="card-text" th:text="${greeting.totalCustoServiceAno}">R$ 0,00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+            <div class="card border-2 border-success">
+                <span class="position-absolute top-0 start-50 translate-middle badge rounded-pill bg-danger">
+                    RECOMENDADO
+                    <span class="visually-hidden">unread messages</span>
+                  </span>
+                <div class="card-body">
+                    <h2 class="card-title  ">Selenium</h2>
+                    <p class="card-text">
+                    <ol class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Licença Mensal</div>
+                            </div>
+                            <span class="badge bg-secondary rounded-pill">R$ 0,00</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto ">
+                                <div class="fw-bold">Custos do Primeiro Mês</div>
+                            </div>
+                            <span class="badge bg-success rounded-pill"
+                                  th:text="${greeting.totalPrimeiroSeleniumMes}">R$ 0,00</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto ">
+                                <div class="fw-bold">Custos Mensais</div>
+                            </div>
+                            <span class="badge bg-success rounded-pill"
+                                  th:text="${greeting.totalSeleniumMes}">R$ 0,00</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto ">
+                                <div class="fw-bold">Custos Anual</div>
+                            </div>
+                            <span class="badge bg-success rounded-pill"
+                                  th:text="${greeting.totalSeleniumAno}">R$ 0,00</span>
+                        </li>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto ">
+                                <div class="fw-bold">Redução de Custos do Processo</div>
+                            </div>
+                            <h5><span class="badge bg-primary rounded-pill"
+                                      th:text="${greeting.reducaoS}">R$ 0,00</span></h5>
+                        </li>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto ">
+                                <div class="fw-bold">Retorno sobre investimento</div>
+                            </div>
+                            <h5><span class="badge bg-primary rounded-pill" th:text="${greeting.roiS}">0 %</span></h5>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">UiPath</h2>
+                    <ol class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold">Licença Mensal</div>
+                            </div>
+                            <span class="badge bg-secondary rounded-pill">R$ 2.359,08</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto ">
+                                <div class="fw-bold">Custos do Primeiro Mês</div>
+                            </div>
+                            <span class="badge bg-success rounded-pill"
+                                  th:text="${greeting.totalPrimeiroUipathMes}">R$ 0,00</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto ">
+                                <div class="fw-bold">Custos Mensais</div>
+                            </div>
+                            <span class="badge bg-success rounded-pill"
+                                  th:text="${greeting.totalUipathMes}">R$ 0,00</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto ">
+                                <div class="fw-bold">Custos Anual</div>
+                            </div>
+                            <span class="badge bg-success rounded-pill"
+                                  th:text="${greeting.totalUipathAno}">R$ 0,00</span>
+                        </li>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto ">
+                                <div class="fw-bold">Redução de Custos do Processo</div>
+                            </div>
+                            <h5><span class="badge bg-primary rounded-pill"
+                                      th:text="${greeting.reducaoU}">R$ 0,00</span></h5>
+                        </li>
+
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto ">
+                                <div class="fw-bold">Retorno sobre investimento</div>
+                            </div>
+                            <h5><span class="badge bg-primary rounded-pill" th:text="${greeting.roiU}">0 %</span></h5>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col mt-5">
+        <div class="accordion" id="accordionExample1">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Preço
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                     data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <div class="row row-cols-1 row-cols-md-2 g-4">
+                            <div class="col">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Sem custo de licenças</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <p class="card-text">A partir de</p>
+                                        <h3 class="card-title">$420/Por-Mês</h3>
+                                        <p class="card-text">Modelo de Preço: <span class="">Valor Fixo</span></p>
+                                        <h5><i class="bi bi-check2-circle text-success"></i> Teste grátis</h5>
+                                        <h5><i class="bi bi-check2-circle text-success"></i> Versão gratuita</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col mt-5">
+        <div class="accordion" id="accordionExample2">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        Características
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
+                     data-bs-parent="#accordionExample2">
+                    <div class="accordion-body">
+                        <div class="row row-cols-1 row-cols-md-2 g-4">
+                            <div class="col">
+                                <h5 class="card-title">Selenium</h5>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Suporte a vários
+                                            navegadores</h6>
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Compatibilidade multilíngue
+                                        </h6>
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Uso de Elementos da Web
+                                        </h6>
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Desempenho e Velocidade
+                                        </h6>
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Elementos dinâmicos da Web
+                                        </h6>
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Código Aberto</h6>
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Portabilidade</h6>
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Reutilização</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h5 class="card-title">Uipath</h5>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Automação Assistida</h6>
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Desenvolvimento sem código
+                                        </h6>
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Reconhecimento de imagem
+                                        </h6>
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Integração em aplicativos
+                                            de terceiros</h6>
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Reconhecimento óptico de
+                                            caracteres</h6>
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Construtor de processos
+                                        </h6>
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Relatórios/Análise</h6>
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Automação autônoma</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col mt-5">
+        <div class="accordion" id="accordionExample3">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headinThree">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        Avaliações
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree"
+                     data-bs-parent="#accordionExample3">
+                    <div class="accordion-body">
+                        <div class="row row-cols-1 row-cols-md-2 g-4">
+                            <div class="col">
+                                <h5 class="card-title">Selenium</h5>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Fácil de usar</h6>
+                                        <div class="progress mb-3" role="progressbar" aria-label="Basic example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar" style="width: 70%"></div>
+                                        </div>
+
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Atendimento ao Cliente</h6>
+                                        <div class="progress mb-3" role="progressbar" aria-label="Basic example"
+                                             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar" style="width: 50%"></div>
+                                        </div>
+
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Características</h6>
+                                        <div class="progress mb-3" role="progressbar" aria-label="Basic example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar" style="width: 60%"></div>
+                                        </div>
+
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Custo-benefício</h6>
+                                        <div class="progress mb-3" role="progressbar" aria-label="Basic example"
+                                             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar" style="width: 95%"></div>
+                                        </div>
+
+                                        <h6><i class="bi bi-check2-circle text-success"></i>Recomendação</h6>
+                                        <div class="progress mb-3" role="progressbar" aria-label="Basic example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar" style="width: 80%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <h5 class="card-title">UiPath</h5>
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Fácil de usar</h6>
+                                        <div class="progress mb-3" role="progressbar" aria-label="Basic example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar" style="width: 95%"></div>
+                                        </div>
+
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Atendimento ao Cliente</h6>
+                                        <div class="progress mb-3" role="progressbar" aria-label="Basic example"
+                                             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar" style="width: 90%"></div>
+                                        </div>
+
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Características</h6>
+                                        <div class="progress mb-3" role="progressbar" aria-label="Basic example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar" style="width: 90%"></div>
+                                        </div>
+
+                                        <h6><i class="bi bi-check2-circle text-success"></i> Custo-benefício</h6>
+                                        <div class="progress mb-3" role="progressbar" aria-label="Basic example"
+                                             aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar" style="width: 70%"></div>
+                                        </div>
+
+                                        <h6><i class="bi bi-check2-circle text-success"></i>Recomendação</h6>
+                                        <div class="progress mb-3" role="progressbar" aria-label="Basic example"
+                                             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-bar" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div class="container-fluid">
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card p-3">
+                <div class="table-responsive">
+                    <table class="table ">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Mês 1</th>
+                            <th scope="col">Mês 2</th>
+                            <th scope="col">Mês 3</th>
+                            <th scope="col">Mês 4</th>
+                            <th scope="col">Mês 5</th>
+                            <th scope="col">Mês 6</th>
+                            <th scope="col">Mês 7</th>
+                            <th scope="col">Mês 8</th>
+                            <th scope="col">Mês 9</th>
+                            <th scope="col">Mês 10</th>
+                            <th scope="col">Mês 11</th>
+                            <th scope="col">Mês 12</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">Sem automatizar</th>
+                            <td th:text="${greeting.totalColab}">0,00</td>
+                            <td th:text="${greeting.totalColab}">0,00</td>
+                            <td th:text="${greeting.totalColab}">0,00</td>
+                            <td th:text="${greeting.totalColab}">0,00</td>
+                            <td th:text="${greeting.totalColab}">0,00</td>
+                            <td th:text="${greeting.totalColab}">0,00</td>
+                            <td th:text="${greeting.totalColab}">0,00</td>
+                            <td th:text="${greeting.totalColab}">0,00</td>
+                            <td th:text="${greeting.totalColab}">0,00</td>
+                            <td th:text="${greeting.totalColab}">0,00</td>
+                            <td th:text="${greeting.totalColab}">0,00</td>
+                            <td th:text="${greeting.totalColab}">0,00</td>
+                            <td th:text="${greeting.totalColabAno}">0,00</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Custo Total de Colaboradores</th>
+                            <td th:text="${greeting.totalColab}">0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td th:text="${greeting.totalColab}">0,00</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Custo Total de Desenvolvimento</th>
+                            <td th:text="${greeting.totalCustoDev}">0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td>0,00</td>
+                            <td th:text="${greeting.totalCustoDev}">0,00</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Custo Total de Suporte</th>
+                            <td>0,00</td>
+                            <td th:text="${greeting.totalCustoSuporte}">0,00</td>
+                            <td th:text="${greeting.totalCustoSuporte}">0,00</td>
+                            <td th:text="${greeting.totalCustoSuporte}">0,00</td>
+                            <td th:text="${greeting.totalCustoSuporte}">0,00</td>
+                            <td th:text="${greeting.totalCustoSuporte}">0,00</td>
+                            <td th:text="${greeting.totalCustoSuporte}">0,00</td>
+                            <td th:text="${greeting.totalCustoSuporte}">0,00</td>
+                            <td th:text="${greeting.totalCustoSuporte}">0,00</td>
+                            <td th:text="${greeting.totalCustoSuporte}">0,00</td>
+                            <td th:text="${greeting.totalCustoSuporte}">0,00</td>
+                            <td th:text="${greeting.totalCustoSuporte}">0,00</td>
+                            <td th:text="${greeting.totalCustoSuporteAno}">0,00</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Custo Total de das Maquinas</th>
+                            <td>0,00</td>
+                            <td th:text="${greeting.totalCustoMaq}">0,00</td>
+                            <td th:text="${greeting.totalCustoMaq}">0,00</td>
+                            <td th:text="${greeting.totalCustoMaq}">0,00</td>
+                            <td th:text="${greeting.totalCustoMaq}">0,00</td>
+                            <td th:text="${greeting.totalCustoMaq}">0,00</td>
+                            <td th:text="${greeting.totalCustoMaq}">0,00</td>
+                            <td th:text="${greeting.totalCustoMaq}">0,00</td>
+                            <td th:text="${greeting.totalCustoMaq}">0,00</td>
+                            <td th:text="${greeting.totalCustoMaq}">0,00</td>
+                            <td th:text="${greeting.totalCustoMaq}">0,00</td>
+                            <td th:text="${greeting.totalCustoMaq}">0,00</td>
+                            <td th:text="${greeting.totalCustoMaqAno}">0,00</td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Custo Total dos serviços</th>
+                            <td>0,00</td>
+                            <td th:text="${greeting.totalCustoService}">0,00</td>
+                            <td th:text="${greeting.totalCustoService}">0,00</td>
+                            <td th:text="${greeting.totalCustoService}">0,00</td>
+                            <td th:text="${greeting.totalCustoService}">0,00</td>
+                            <td th:text="${greeting.totalCustoService}">0,00</td>
+                            <td th:text="${greeting.totalCustoService}">0,00</td>
+                            <td th:text="${greeting.totalCustoService}">0,00</td>
+                            <td th:text="${greeting.totalCustoService}">0,00</td>
+                            <td th:text="${greeting.totalCustoService}">0,00</td>
+                            <td th:text="${greeting.totalCustoService}">0,00</td>
+                            <td th:text="${greeting.totalCustoService}">0,00</td>
+                            <td th:text="${greeting.totalCustoServiceAno}">0,00</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a href="/">Refazer o teste</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

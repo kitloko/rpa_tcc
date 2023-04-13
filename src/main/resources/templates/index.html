@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en" class="h-100" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.108.0">
+    <title>Cover Template · Bootstrap v5.3</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+
+    <script
+            src="https://code.jquery.com/jquery-3.6.4.js"
+            integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+            crossorigin="anonymous"></script>
+
+</head>
+
+<body class="h-100 bg-light">
+
+<div class="container d-flex align-items-center justify-content-center h-100">
+    <div class="row h-100 align-items-center justify-content-center text-center">
+        <div class="col-md-4 p-5 shadow bg-white border" style="min-width: 576px;">
+            <div id="inicial">
+                <h3 class="text-danger">Comparação de Software de Automação Robótica de Processos</h3>
+                <p class="lead">A comparação é realizada com base no custo do processo atual, desenvolvimento do software, suporte e manutenção, implementação e serviços adicionais</p>
+                <p class="lead">
+                    <button class="btn btn-lg btn-danger fw-bold" id="start">Começar</button>
+                </p>
+            </div>
+
+            <form action="#" th:action="@{/receive}" method="post" th:object="${form}">
+                <div id="colabProcess" style="display: none;">
+                    <h4 class="text-danger mb-3">Colaboradores envolvidos no processo</h4>
+                    <p class="lead mb-5">
+                        Todas as informações dos colaboradores que fazem esse processo, essa etapa é
+                        para
+                        validar o ROI após automatizar o processo
+                    </p>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radio1" id="radioColab">
+                        <label class="form-check-label" for="radioColab">Colaboradores</label>
+                    </div>
+                    <div class="form-check form-check-inline mb-5">
+                        <input class="form-check-input" type="radio" name="radio1" id="radioProcess" >
+                        <label class="form-check-label" for="radioProcess">Processo</label>
+                    </div>
+
+                    <div id="divColab" style="display: none;">
+                        <label for="qtdColab" class="form-label">Quantidade Colaboradores</label>
+                        <input type="number" class="form-control" id="qtdColab" aria-describedby="qtdColab" value="0"
+                               th:field="*{qtdColab}">
+                        <label for="custoColab" class="form-label">Custo total colaboradores/mês</label>
+                        <input type="number" class="form-control" step="0.01" id="custoColab" th:field="*{custoColab}">
+                    </div>
+
+                    <!---->
+
+
+                    <div id="divProcess" style="display: none;">
+                        <label for="custoProcesso" class="form-label">Custo total do processo/mês</label>
+                        <input type="number" class="form-control" step="0.01" id="custoProcesso" th:field="*{custoProcesso}">
+                    </div>
+
+                    <!---->
+
+                    <p class="lead mt-5">
+                        <button type="button" id="start1" class="btn btn-outline-danger fw-bold">Proximo</button>
+                    </p>
+
+                    <script>
+                        $(document).ready(function(){
+                            $("input[id$='radioProcess']").click(function() {
+                                $("#divColab").hide("slow");
+                                $("#divProcess").show("slow");
+                            });
+
+                            $("input[id$='radioColab']").click(function() {
+                                $("#divProcess").hide("slow");
+                                $("#divColab").show("slow");
+                            });
+                        });
+                    </script>
+
+                </div>
+                <div id="devProcess" style="display: none;">
+                    <h3 class="text-danger">Desenvolvimento do processo</h3>
+                    <p class="lead mb-5">Todas as informações dos envolvidos no desenvolvimento da automatização</p>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="devp" id="devProp" value="true"
+                               th:field="*{devProp}">
+                        <label class="form-check-label" for="devProp">Próprio</label>
+                    </div>
+                    <div class="form-check form-check-inline mb-5">
+                        <input class="form-check-input" type="radio" name="devp" id="devContra" value="true"
+                               th:field="*{devContra}">
+                        <label class="form-check-label" for="devContra">Contratado</label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="custoDev" class="form-label">Custo desenvolvimento</label>
+                        <input type="number" class="form-control" id="custoDev" step="0.01" th:field="*{custoDev}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="tempoDev" class="form-label">Tempo desenvolvimento (Horas)</label>
+                        <input type="number" class="form-control" id="tempoDev" th:field="*{tempoDev}">
+                    </div>
+
+                    <p class="lead">
+                        <button id="start2" type="button" class="btn btn-outline-danger fw-bold">Proximo</button>
+                    </p>
+                </div>
+                <div id="suporte" style="display: none;">
+                    <h4 class="text-danger mb-3">Suporte e manutenção</h4>
+                    <p class="lead mb-5">Todas as informações para a sustentação do processo</p>
+
+                    <div class="form-check form-check-inline mb-5">
+                        <input class="form-check-input" type="radio" name="supMan" id="supProp" value="true"
+                               th:field="*{supProp}">
+                        <label class="form-check-label" for="supProp">Próprio</label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="qtdColabSub" class="form-label">Quantidade de colaboradores</label>
+                        <input type="number" class="form-control" id="qtdColabSub" value="0" th:field="*{qtdColabSub}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="custoColabSup" class="form-label">Custo dos colaboradores/mês</label>
+                        <input type="number" step="0.01" class="form-control" id="custoColabSup"
+                               th:field="*{custoColabSup}">
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input mb-5" type="radio" name="supMan" id="supContra" value="true"
+                               th:field="*{supContra}">
+                        <label class="form-check-label" for="supContra">Contratado</label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="custoContraSup" class="form-label">Custo por hora/mês</label>
+                        <input type="number" step="0.01" class="form-control" id="custoContraSup"
+                               th:field="*{custoContraSup}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="tempoContraSup" class="form-label">horas contratado de suporte/mês (Horas)</label>
+                        <input type="number" class="form-control" id="tempoContraSup" th:field="*{tempoContraSup}">
+                    </div>
+                    <p class="lead">
+                        <button id="start3" type="button" class="btn btn-outline-danger fw-bold">Proximo</button>
+                    </p>
+                </div>
+                <div id="deploy" style="display: none;">
+                    <h4 class="text-danger mb-3">Deploy do projeto</h4>
+                    <p class="lead mb-5">Todas as informações para o deploy do processo</p>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="dp" id="maqPropSC" value="true"
+                               th:field="*{maqPropSC}">
+                        <label class="form-check-label" for="maqPropSC">Máquina Própria sem custo</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="dp" id="maqPropCC" value="true"
+                               th:field="*{maqPropCC}">
+                        <label class="form-check-label" for="maqPropCC">Máquina Própria com custo</label>
+                    </div>
+
+                    <div class="form-check form-check-inline mb-5">
+                        <input class="form-check-input" type="radio" name="dp" id="maqVirt" value="true"
+                               th:field="*{maqVirt}">
+                        <label class="form-check-label" for="maqVirt">Máquina virtual</label>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="qtdMaq" class="form-label">Quantidade máquinas</label>
+                        <input type="number" class="form-control" id="qtdMaq" th:field="*{qtdMaq}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="custoMaq" class="form-label">Custo máquina</label>
+                        <input type="number" class="form-control" step="0.01" id="custoMaq" th:field="*{custoMaq}">
+                    </div>
+
+                    <p class="lead">
+                        <button id="start4" type="button" class="btn btn-outline-danger fw-bold">Proximo</button>
+                    </p>
+                </div>
+                <div id="service" style="display: none;">
+                    <h4 class="text-danger mb-3">Custos adicionais de serviços</h4>
+                    <p class="lead">Custos adicionais previstos no projeto</p>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="true" id="checkOrchestrator"
+                               th:field="*{checkOrchestrator}">
+                        <label class="form-check-label" for="checkOrchestrator">
+                            Orchestrator
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="true" id="checkApi"
+                               th:field="*{checkApi}">
+                        <label class="form-check-label" for="checkApi">
+                            API
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="true" id="checkCaptcha" checked>
+                        <label class="form-check-label" for="checkCaptcha" th:field="*{checkCaptcha}">
+                            CAPTCHA
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="true" id="checkAws">
+                        <label class="form-check-label" for="checkAws" th:field="*{checkAws}">
+                            AWS
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="true" id="checkCloud" checked>
+                        <label class="form-check-label" for="checkCloud" th:field="*{checkCloud}">
+                            Cloud
+                        </label>
+                    </div>
+
+                    <p class="lead">
+                        <button type="submit" class="btn btn-lg btn-danger fw-bold">Calcular</button>
+                    </p>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $("#start").click(function(){
+            $("#inicial").hide( "slow" );
+            $("#colabProcess").show("slow");
+        });
+
+        $("#start1").click(function(){
+            $("#colabProcess").hide( "slow" );
+            $("#devProcess").show("slow");
+        });
+
+        $("#start2").click(function(){
+            $("#devProcess").hide( "slow" );
+            $("#suporte").show("slow");
+        });
+
+        $("#start3").click(function(){
+            $("#suporte").hide( "slow" );
+            $("#deploy").show("slow");
+        });
+
+        $("#start4").click(function(){
+            $("#deploy").hide( "slow" );
+            $("#service").show("slow");
+        });
+    });
+</script>
+
+</body>
+</html>
